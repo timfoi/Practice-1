@@ -17,4 +17,9 @@ int main(){
 	}
 }
 
-bool ispith(unsigned a,unsigned b,unsigned c);
+bool ispith(unsigned a,unsigned b,unsigned c){
+	bool p = a*a == b*b+c*c;
+	p = p||b*b == a*a+c*c;
+	p = p || c*c == a*a+b*b;
+	return p;
+}
