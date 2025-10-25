@@ -1,17 +1,17 @@
 #include <iostream>
 #include <limits.h>
 bool ispith(unsigned a,unsigned b,unsigned c);
+bool isOverflowing(unsigned,unsigned, unsigned);
 int main(){
 	using u_t = unsigned;
-	unsigned max = UINT_MAX;
 	u_t a = 0, b=0, c=0;
 	std::cin>>c>>b;
 	size_t k = 0;
 	while(std::cin>>a){
 		c = b;
 		b = a;
-		if (a > max/a || b > max/b || c < max/c|| k>max){
-			std::cerr<<"Overflow err \n";
+		if (isOverflowing(a,b,c)){
+			std::cerr<<"Overflow err\n";
 			return 2;
 		}
 		k += ispith(a,b,c)?1:0;
@@ -21,7 +21,7 @@ int main(){
 		std::cout<<"\n";
 	}
 	else if(std::cin.fail()){
-		std::cerr<<"Input err \n";
+		std::cerr<<"Input err\n";
 		return 1;
 	}
 }
@@ -30,5 +30,16 @@ bool ispith(unsigned a,unsigned b,unsigned c){
 	bool p = a*a == b*b+c*c;
 	p = p||b*b == a*a+c*c;
 	p = p || c*c == a*a+b*b;
+	return p;
+}
+
+bool isOverflowing(unsigned a,unsigned b, unsigned c){
+	unsigned max = UINT_MAX;
+	bool p = a>0 && max/a < a;
+	p = p || b>0 && max/b < b;
+	p = p || c>0 && max/c < c;
+	p = p || max-b*b < c*c;
+	p = p || max-a*a < c*c;
+	p = p || max-a*a < b*b;
 	return p;
 }
