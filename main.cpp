@@ -10,7 +10,7 @@ int main(){
 	while(std::cin>>a){
 		c = b;
 		b = a;
-		if (a*a > max || b*b > max || c*c < max || k>max){
+		if (a > max/a || b > max/b || c < max/c|| k>max){
 			std::cerr<<"Overflow err \n";
 			return 2;
 		}
