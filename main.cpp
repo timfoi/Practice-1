@@ -1,13 +1,19 @@
 #include <iostream>
+#include <limits.h>
 bool ispith(unsigned a,unsigned b,unsigned c);
 int main(){
 	using u_t = unsigned;
+	unsigned max = UINT_MAX;
 	u_t a = 0, b=0, c=0;
 	std::cin>>c>>b;
 	size_t k = 0;
 	while(std::cin>>a){
 		c = b;
 		b = a;
+		if (a*a > max || b*b > max || c*c < max || k>max){
+			std::cerr<<"Overflow err \n";
+			return 2;
+		}
 		k += ispith(a,b,c)?1:0;
 	}
 	if (std::cin.eof()){
