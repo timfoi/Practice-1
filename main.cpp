@@ -3,8 +3,11 @@ bool ispith(unsigned a,unsigned b,unsigned c);
 int main(){
 	using u_t = unsigned;
 	u_t a = 0, b=0, c=0;
+	std::cin>>c>>b;
 	size_t k = 0;
 	while(std::cin>>a){
+		c = b;
+		b = a;
 		k += ispith(a,b,c)?1:0;
 	}
 	if (std::cin.eof()){
