@@ -1,10 +1,11 @@
 #include <iostream>
+bool ispith(unsigned a,unsigned b,unsigned c);
 int main(){
 	using u_t = unsigned;
-	u_t a = 0;
+	u_t a = 0, b=0, c=0;
 	size_t k = 0;
 	while(std::cin>>a){
-		k++;
+		k += ispith(a,b,c)?1:0;
 	}
 	if (std::cin.eof()){
 		std::cout<<k;
@@ -15,3 +16,5 @@ int main(){
 		return 1;
 	}
 }
+
+bool ispith(unsigned a,unsigned b,unsigned c);
